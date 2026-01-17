@@ -9,7 +9,9 @@
       "Bash(.specify/scripts/bash/check-prerequisites.sh:*)",
       "Bash(.specify/scripts/bash/setup-plan.sh:*)",
       "Bash(.specify/scripts/bash/update-agent-context.sh:*)",
-      "Bash(find:*)"
+      "Bash(find:*)",
+      "Skill(speckit.tasks)",
+      "Bash(git checkout:*)"
     ]
   }
 }
