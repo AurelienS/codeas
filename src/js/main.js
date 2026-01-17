@@ -71,11 +71,6 @@ function renderProjects(projects) {
       <div class="project-content">
         <h3 class="project-title">${escapeHtml(project.name)}</h3>
         <p class="project-description">${escapeHtml(project.description)}</p>
-        ${project.tags && project.tags.length > 0 ? `
-          <div class="project-tags">
-            ${project.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
-          </div>
-        ` : ''}
         <div class="project-links">
           ${project.sourceUrl ? `
             <a href="${escapeHtml(project.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="project-link">
