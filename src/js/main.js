@@ -1,7 +1,126 @@
 /**
  * Portfolio Site JavaScript
- * Handles content loading and rendering
+ * Handles content loading, i18n, and theme switching
  */
+
+// ============================================
+// State
+// ============================================
+
+let currentLang = 'en';
+let contentData = null;
+let projectsData = [];
+
+// ============================================
+// i18n Helper
+// ============================================
+
+/**
+ * Get translated text
+ * @param {string|Object} text - Text or object with translations
+ * @returns {string} Translated text
+ */
+function t(text) {
+  if (!text) return '';
+  if (typeof text === 'string') return text;
+  return text[currentLang] || text.en || '';
+}
+
+/**
+ * Get UI translation
+ * @param {string} key - UI translation key
+ * @returns {string} Translated text
+ */
+function ui(key) {
+  if (!contentData?.ui?.[key]) return key;
+  return t(contentData.ui[key]);
+}
+
+/**
+ * Update all i18n elements on the page
+ */
+function updateI18nElements() {
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.dataset.i18n;
+    el.textContent = ui(key);
+  });
+}
+
+// ============================================
+// Theme
+// ============================================
+
+/**
+ * Set theme
+ * @param {string} theme - 'light' or 'dark'
+ */
+function setTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem('theme', theme);
+}
+
+/**
+ * Toggle theme
+ */
+function toggleTheme() {
+  const current = document.documentElement.getAttribute('data-theme') || 'dark';
+  setTheme(current === 'dark' ? 'light' : 'dark');
+}
+
+/**
+ * Initialize theme from localStorage or system preference
+ */
+function initTheme() {
+  const saved = localStorage.getItem('theme');
+  if (saved) {
+    setTheme(saved);
+  } else {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    setTheme(prefersDark ? 'dark' : 'light');
+  }
+}
+
+// ============================================
+// Language
+// ============================================
+
+/**
+ * Set language
+ * @param {string} lang - 'en' or 'fr'
+ */
+function setLang(lang) {
+  currentLang = lang;
+  document.documentElement.setAttribute('lang', lang);
+  localStorage.setItem('lang', lang);
+
+  // Update UI elements
+  updateI18nElements();
+
+  // Re-render content
+  if (contentData) {
+    renderProjects(contentData.projects);
+    renderProfile(contentData.profile);
+  }
+}
+
+/**
+ * Initialize language from localStorage or browser preference
+ */
+function initLang() {
+  const saved = localStorage.getItem('lang');
+  if (saved) {
+    currentLang = saved;
+  } else {
+    const browserLang = navigator.language.slice(0, 2);
+    currentLang = browserLang === 'fr' ? 'fr' : 'en';
+  }
+
+  // Set select value
+  const select = document.getElementById('lang-select');
+  if (select) select.value = currentLang;
+
+  document.documentElement.setAttribute('lang', currentLang);
+}
 
 // ============================================
 // Content Fetching
@@ -25,7 +144,7 @@ async function fetchContent() {
 }
 
 // ============================================
-// Projects Rendering (US1)
+// Projects Rendering
 // ============================================
 
 /**
@@ -51,7 +170,7 @@ function renderProjects(projects) {
   if (!projects || projects.length === 0) {
     container.innerHTML = `
       <div class="empty-state">
-        <p>Projects coming soon!</p>
+        <p>${escapeHtml(ui('projectsComing'))}</p>
       </div>
     `;
     return;
@@ -59,6 +178,7 @@ function renderProjects(projects) {
 
   // Sort projects by order
   const sortedProjects = [...projects].sort((a, b) => a.order - b.order);
+  projectsData = sortedProjects;
 
   // Render project cards
   container.innerHTML = sortedProjects.map(project => `
@@ -70,16 +190,16 @@ function renderProjects(projects) {
       ` : ''}
       <div class="project-content">
         <h3 class="project-title">${escapeHtml(project.name)}</h3>
-        <p class="project-description">${escapeHtml(project.description)}</p>
+        <p class="project-description">${escapeHtml(t(project.description))}</p>
         <div class="project-links">
           ${project.sourceUrl ? `
             <a href="${escapeHtml(project.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="project-link">
-              GitHub
+              ${escapeHtml(ui('github'))}
             </a>
           ` : ''}
           ${project.demoUrl ? `
             <a href="${escapeHtml(project.demoUrl)}" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
-              Visit
+              ${escapeHtml(ui('visit'))}
             </a>
           ` : ''}
         </div>
@@ -89,11 +209,8 @@ function renderProjects(projects) {
 }
 
 // ============================================
-// Project Details Modal (US3)
+// Project Details Modal
 // ============================================
-
-// Store projects data for modal access
-let projectsData = [];
 
 /**
  * Open project details modal
@@ -120,10 +237,7 @@ function openProjectModal(projectId) {
     <div class="modal-content" role="document">
       <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">&times;</button>
       <h2 class="modal-title">${escapeHtml(project.name)}</h2>
-      ${project.fullDescription
-        ? `<p class="modal-description">${escapeHtml(project.fullDescription)}</p>`
-        : `<p class="modal-description">${escapeHtml(project.description)}</p>`
-      }
+      <p class="modal-description">${escapeHtml(t(project.fullDescription) || t(project.description))}</p>
       ${project.tags && project.tags.length > 0 ? `
         <div class="project-tags modal-tags">
           ${project.tags.map(tag => `<span class="tag">${escapeHtml(tag)}</span>`).join('')}
@@ -132,12 +246,12 @@ function openProjectModal(projectId) {
       <div class="modal-links">
         ${project.sourceUrl ? `
           <a href="${escapeHtml(project.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="project-link">
-            GitHub
+            ${escapeHtml(ui('github'))}
           </a>
         ` : ''}
         ${project.demoUrl ? `
           <a href="${escapeHtml(project.demoUrl)}" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
-            Visit
+            ${escapeHtml(ui('visit'))}
           </a>
         ` : ''}
       </div>
@@ -194,7 +308,7 @@ function setupKeyboardListeners() {
 }
 
 // ============================================
-// Profile Rendering (US2)
+// Profile Rendering
 // ============================================
 
 /**
@@ -209,7 +323,7 @@ function renderProfile(profile) {
   if (!profile) {
     container.innerHTML = `
       <div class="empty-state">
-        <p>Profile information coming soon!</p>
+        <p>${escapeHtml(ui('profileComing'))}</p>
       </div>
     `;
     return;
@@ -240,8 +354,8 @@ function renderProfile(profile) {
       ` : ''}
       <div class="profile-info">
         <h3 class="profile-name">${escapeHtml(profile.name)}</h3>
-        ${profile.headline ? `<p class="profile-headline">${escapeHtml(profile.headline)}</p>` : ''}
-        ${profile.bio ? `<p class="profile-bio">${escapeHtml(profile.bio)}</p>` : ''}
+        ${profile.headline ? `<p class="profile-headline">${escapeHtml(t(profile.headline))}</p>` : ''}
+        ${profile.bio ? `<p class="profile-bio">${escapeHtml(t(profile.bio))}</p>` : ''}
         ${socialLinksHtml}
       </div>
     </div>
@@ -256,23 +370,41 @@ function renderProfile(profile) {
  * Initialize the site
  */
 async function init() {
+  // Initialize theme and language
+  initTheme();
+  initLang();
+
   // Set current year in footer
   const yearEl = document.getElementById('current-year');
   if (yearEl) {
     yearEl.textContent = new Date().getFullYear();
   }
 
-  // Setup keyboard listeners for modal
+  // Setup event listeners
   setupKeyboardListeners();
 
+  // Theme toggle
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', toggleTheme);
+  }
+
+  // Language select
+  const langSelect = document.getElementById('lang-select');
+  if (langSelect) {
+    langSelect.value = currentLang;
+    langSelect.addEventListener('change', (e) => setLang(e.target.value));
+  }
+
   try {
-    const content = await fetchContent();
+    contentData = await fetchContent();
 
-    // Store projects for modal access
-    projectsData = content.projects || [];
+    // Update i18n elements
+    updateI18nElements();
 
-    renderProjects(content.projects);
-    renderProfile(content.profile);
+    // Render content
+    renderProjects(contentData.projects);
+    renderProfile(contentData.profile);
 
     // Setup click handlers after rendering
     setupProjectCardListeners();
@@ -282,7 +414,7 @@ async function init() {
     if (projectsContainer) {
       projectsContainer.innerHTML = `
         <div class="error-state">
-          <p>Unable to load content. Please try again later.</p>
+          <p>${escapeHtml(ui('loadError'))}</p>
         </div>
       `;
     }

@@ -1,8 +1,14 @@
 {
   "profile": {
     "name": "Aurélien Sberro",
-    "headline": "Developer",
-    "bio": "Passionate developer building side projects and exploring new technologies.",
+    "headline": {
+      "en": "Developer",
+      "fr": "Développeur"
+    },
+    "bio": {
+      "en": "Passionate developer building side projects and exploring new technologies.",
+      "fr": "Développeur passionné qui construit des projets perso et explore de nouvelles technologies."
+    },
     "socialLinks": [
       { "platform": "GitHub", "url": "https://github.com/AurelienS" },
       { "platform": "Email", "url": "mailto:aurelien.sberro@gmail.com" }
@@ -12,8 +18,14 @@
     {
       "id": "meteo-score",
       "name": "Meteo Score",
-      "description": "How accurate are weather forecasts? Find out here.",
-      "fullDescription": "Compare weather predictions from various sources against actual observations to discover which forecasts you can trust.",
+      "description": {
+        "en": "How accurate are weather forecasts? Find out here.",
+        "fr": "Les prévisions météo sont-elles fiables ? Découvrez-le ici."
+      },
+      "fullDescription": {
+        "en": "Compare weather predictions from various sources against actual observations to discover which forecasts you can trust.",
+        "fr": "Comparez les prévisions météo de différentes sources avec les observations réelles pour savoir lesquelles sont fiables."
+      },
       "sourceUrl": "https://github.com/AurelienS/meteo-score",
       "demoUrl": "https://meteo-score.codeas.me",
       "tags": ["Python", "FastAPI", "Solid.js", "BMAD"],
@@ -22,8 +34,14 @@
     {
       "id": "codeas",
       "name": "CodeAs",
-      "description": "You're looking at it right now.",
-      "fullDescription": "My personal portfolio to showcase side projects and experiments.",
+      "description": {
+        "en": "You're looking at it right now.",
+        "fr": "Vous êtes dessus en ce moment."
+      },
+      "fullDescription": {
+        "en": "My personal portfolio to showcase side projects and experiments.",
+        "fr": "Mon portfolio personnel pour présenter mes projets et expérimentations."
+      },
       "sourceUrl": "https://github.com/AurelienS/codeas",
       "demoUrl": "https://codeas.me",
       "tags": ["HTML", "CSS", "JavaScript", "Speckit"],
@@ -32,8 +50,14 @@
     {
       "id": "quickr",
       "name": "Quickr",
-      "description": "Your own golink, but actually yours.",
-      "fullDescription": "A self-hosted URL shortener with real-time search, click stats, and zero corporate overlords.",
+      "description": {
+        "en": "Your own golink, but actually yours.",
+        "fr": "Votre propre golink, mais vraiment à vous."
+      },
+      "fullDescription": {
+        "en": "A self-hosted URL shortener with real-time search, click stats, and zero corporate overlords.",
+        "fr": "Un raccourcisseur d'URL auto-hébergé avec recherche en temps réel, stats de clics, et zéro GAFAM."
+      },
       "sourceUrl": "https://github.com/AurelienS/quickr",
       "demoUrl": "https://quickr.codeas.me",
       "tags": ["Go", "HTMX", "SQLite"],
@@ -42,8 +66,14 @@
     {
       "id": "quickr-jump",
       "name": "Quickr Jump",
-      "description": "The sidekick extension for Quickr.",
-      "fullDescription": "Type 'q' + Space in your browser, then jump straight to your short URLs. Because clicking is overrated.",
+      "description": {
+        "en": "The sidekick extension for Quickr.",
+        "fr": "L'extension acolyte de Quickr."
+      },
+      "fullDescription": {
+        "en": "Type 'q' + Space in your browser, then jump straight to your short URLs. Because clicking is overrated.",
+        "fr": "Tapez 'q' + Espace dans votre navigateur, puis sautez directement vers vos URLs courtes. Parce que cliquer, c'est surfait."
+      },
       "sourceUrl": "https://github.com/AurelienS/quickr-jump",
       "tags": ["JavaScript", "Browser Extension"],
       "order": 4
@@ -51,8 +81,14 @@
     {
       "id": "sarouels-mocassins",
       "name": "Sarouels Mocassins",
-      "description": "Are you more left or right? Find out in 10 questions.",
-      "fullDescription": "A political compass test, but make it absurd. Entirely vibe-coded by AI, no humans were harmed.",
+      "description": {
+        "en": "Are you more left or right? Find out.",
+        "fr": "Êtes-vous plutôt gauche ou droite ? Découvrez-le."
+      },
+      "fullDescription": {
+        "en": "A political compass test, but make it absurd. Entirely vibe-coded by AI, no humans were harmed.",
+        "fr": "Un test de boussole politique, mais en absurde. Entièrement vibe-codé par une IA, aucun humain n'a été blessé."
+      },
       "sourceUrl": "https://github.com/AurelienS/sarouels-mocassins",
       "demoUrl": "https://sarouel-ou-mocassin.codeas.me",
       "tags": ["Go", "Docker", "Vibe-coded"],
@@ -61,18 +97,41 @@
     {
       "id": "airvibe",
       "name": "AirVibe",
-      "description": "Track your paragliding flights. The fancy one.",
-      "fullDescription": "A flight logbook with interactive maps and stats. For pilots who like their data visualized.",
+      "description": {
+        "en": "Track your paragliding flights. The fancy one.",
+        "fr": "Suivez vos vols en parapente. La version stylée."
+      },
+      "fullDescription": {
+        "en": "A flight logbook with interactive maps and stats. For pilots who like their data visualized.",
+        "fr": "Un carnet de vol avec cartes interactives et stats. Pour les pilotes qui aiment visualiser leurs données."
+      },
       "tags": ["Next.js", "Prisma", "tRPC", "In Development"],
       "order": 6
     },
     {
       "id": "airtime",
       "name": "Airtime",
-      "description": "Track your paragliding flights. The other one.",
-      "fullDescription": "Another flight logbook, different vibe. Because one was clearly not enough.",
+      "description": {
+        "en": "Track your paragliding flights. The other one.",
+        "fr": "Suivez vos vols en parapente. L'autre version."
+      },
+      "fullDescription": {
+        "en": "Another flight logbook, different vibe. Because one was clearly not enough.",
+        "fr": "Un autre carnet de vol, ambiance différente. Parce qu'un seul, c'était clairement pas assez."
+      },
       "tags": ["Go", "HTMX", "Templ", "In Development"],
       "order": 7
     }
-  ]
+  ],
+  "ui": {
+    "projects": { "en": "Projects", "fr": "Projets" },
+    "about": { "en": "About", "fr": "À propos" },
+    "aboutMe": { "en": "About Me", "fr": "À propos" },
+    "github": { "en": "GitHub", "fr": "GitHub" },
+    "visit": { "en": "Visit", "fr": "Visiter" },
+    "projectsComing": { "en": "Projects coming soon!", "fr": "Projets à venir !" },
+    "profileComing": { "en": "Profile information coming soon!", "fr": "Informations à venir !" },
+    "loadError": { "en": "Unable to load content. Please try again later.", "fr": "Impossible de charger le contenu. Réessayez plus tard." },
+    "loading": { "en": "Loading profile...", "fr": "Chargement..." }
+  }
 }

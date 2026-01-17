@@ -12,16 +12,26 @@
     <nav class="nav">
       <a href="#" class="nav-logo">Portfolio</a>
       <ul class="nav-links">
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#about">About</a></li>
+        <li><a href="#projects" data-i18n="projects">Projects</a></li>
+        <li><a href="#about" data-i18n="about">About</a></li>
       </ul>
+      <div class="nav-controls">
+        <button id="theme-toggle" class="control-btn" aria-label="Toggle theme">
+          <span class="icon-sun">☀️</span>
+          <span class="icon-moon">🌙</span>
+        </button>
+        <select id="lang-select" class="control-select" aria-label="Select language">
+          <option value="en">EN</option>
+          <option value="fr">FR</option>
+        </select>
+      </div>
     </nav>
   </header>
 
   <main>
     <section id="projects" class="section projects-section">
       <div class="container">
-        <h1>Projects</h1>
+        <h1 data-i18n="projects">Projects</h1>
         <div id="projects-container" class="projects-grid">
           <!-- Projects will be loaded here by JavaScript -->
         </div>
@@ -30,10 +40,10 @@
 
     <section id="about" class="section about-section">
       <div class="container">
-        <h2>About Me</h2>
+        <h2 data-i18n="aboutMe">About Me</h2>
         <div id="about-container" class="about-content">
           <!-- Profile will be loaded here by JavaScript -->
-          <p class="loading-state">Loading profile...</p>
+          <p class="loading-state" data-i18n="loading">Loading profile...</p>
         </div>
       </div>
     </section>
