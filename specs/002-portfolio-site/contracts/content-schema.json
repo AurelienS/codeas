@@ -1,0 +1,139 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "portfolio-content-schema",
+  "title": "Portfolio Content",
+  "description": "Schema for the portfolio site content.json file",
+  "type": "object",
+  "required": ["profile", "projects"],
+  "properties": {
+    "profile": {
+      "type": "object",
+      "description": "Portfolio owner information",
+      "required": ["name", "bio", "socialLinks"],
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Full name of the portfolio owner"
+        },
+        "headline": {
+          "type": "string",
+          "maxLength": 150,
+          "description": "Short tagline or professional title"
+        },
+        "bio": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000,
+          "description": "Personal description/biography"
+        },
+        "image": {
+          "type": "string",
+          "description": "Path to profile image relative to assets/"
+        },
+        "socialLinks": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 10,
+          "description": "Social and contact links",
+          "items": {
+            "$ref": "#/definitions/SocialLink"
+          }
+        }
+      }
+    },
+    "projects": {
+      "type": "array",
+      "description": "List of projects to showcase",
+      "items": {
+        "$ref": "#/definitions/Project"
+      }
+    }
+  },
+  "definitions": {
+    "SocialLink": {
+      "type": "object",
+      "required": ["platform", "url"],
+      "properties": {
+        "platform": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 50,
+          "description": "Platform name (e.g., GitHub, LinkedIn, Email)"
+        },
+        "url": {
+          "type": "string",
+          "description": "Full URL or mailto: link"
+        },
+        "icon": {
+          "type": "string",
+          "description": "Optional icon identifier"
+        }
+      }
+    },
+    "Project": {
+      "type": "object",
+      "required": ["id", "name", "description", "order"],
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[a-z0-9-]+$",
+          "minLength": 1,
+          "maxLength": 50,
+          "description": "Unique identifier (slug format)"
+        },
+        "name": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100,
+          "description": "Project display name"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300,
+          "description": "Brief description for list view"
+        },
+        "fullDescription": {
+          "type": "string",
+          "maxLength": 2000,
+          "description": "Detailed description for expanded view"
+        },
+        "image": {
+          "type": "string",
+          "description": "Path to screenshot relative to assets/"
+        },
+        "sourceUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to source code repository"
+        },
+        "demoUrl": {
+          "type": "string",
+          "format": "uri",
+          "description": "URL to live demo"
+        },
+        "tags": {
+          "type": "array",
+          "maxItems": 10,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 30
+          },
+          "description": "Technology/category tags"
+        },
+        "order": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Display order (lower = first)"
+        }
+      },
+      "anyOf": [
+        { "required": ["sourceUrl"] },
+        { "required": ["demoUrl"] }
+      ]
+    }
+  }
+}
