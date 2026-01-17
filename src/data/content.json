@@ -51,8 +51,8 @@
     {
       "id": "sarouels-mocassins",
       "name": "Sarouels Mocassins",
-      "description": "Left or right? But for fashion.",
-      "fullDescription": "The ultimate personality test disguised as a style quiz. Entirely vibe-coded by AI, no humans were harmed.",
+      "description": "Are you more left or right? Find out in 10 questions.",
+      "fullDescription": "A political compass test, but make it absurd. Entirely vibe-coded by AI, no humans were harmed.",
       "sourceUrl": "https://github.com/AurelienS/sarouels-mocassins",
       "demoUrl": "https://sarouel-ou-mocassin.codeas.me",
       "tags": ["Go", "Docker", "Vibe-coded"],
