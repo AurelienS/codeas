@@ -16,18 +16,28 @@
       "fullDescription": "Meteo Score compares weather predictions from various sources against actual observations to provide accuracy metrics and insights. Built with Python/FastAPI backend, Solid.js frontend, and PostgreSQL database.",
       "sourceUrl": "https://github.com/AurelienS/meteo-score",
       "demoUrl": "https://meteo-score.codeas.me",
-      "tags": ["Python", "FastAPI", "Solid.js", "PostgreSQL"],
+      "tags": ["Python", "FastAPI", "Solid.js", "PostgreSQL", "BMAD"],
       "order": 1
+    },
+    {
+      "id": "codeas",
+      "name": "CodeAs",
+      "description": "This portfolio site - a showcase of my side projects.",
+      "fullDescription": "A personal portfolio website built with vanilla HTML, CSS, and JavaScript. Features project cards, modal details, and responsive design. Deployed via Docker and GitHub Actions.",
+      "sourceUrl": "https://github.com/AurelienS/codeas",
+      "demoUrl": "https://codeas.me",
+      "tags": ["HTML", "CSS", "JavaScript", "Speckit"],
+      "order": 2
     },
     {
       "id": "quickr",
       "name": "Quickr",
       "description": "A modern URL shortener with a clean UI built with Go and HTMX.",
-      "fullDescription": "Quickr is a URL shortener featuring inline editing, real-time search, click statistics, hot links tracking, and dark mode support. Entirely vibe-coded with AI assistance.",
+      "fullDescription": "Quickr is a URL shortener featuring inline editing, real-time search, click statistics, hot links tracking, and dark mode support.",
       "sourceUrl": "https://github.com/AurelienS/quickr",
       "demoUrl": "https://quickr.codeas.me",
       "tags": ["Go", "HTMX", "SQLite"],
-      "order": 2
+      "order": 3
     },
     {
       "id": "quickr-jump",
@@ -36,17 +46,17 @@
       "fullDescription": "A Firefox & Chrome extension (Manifest V3) for omnibox shortcuts. Type 'q' then Space, followed by text to quickly navigate to your short URLs.",
       "sourceUrl": "https://github.com/AurelienS/quickr-jump",
       "tags": ["JavaScript", "Browser Extension", "Manifest V3"],
-      "order": 3
+      "order": 4
     },
     {
       "id": "sarouels-mocassins",
       "name": "Sarouels Mocassins",
       "description": "An application entirely vibe-coded by AI, without any manually written code.",
-      "fullDescription": "A project showcasing AI-driven development, built with Go and Docker. Demonstrates the potential of AI pair programming.",
+      "fullDescription": "A fun project showcasing AI-driven development, built with Go and Docker. Entirely vibe-coded without any manual code.",
       "sourceUrl": "https://github.com/AurelienS/sarouels-mocassins",
-      "demoUrl": "https://sarouels.codeas.me",
-      "tags": ["Go", "Docker", "AI-Generated"],
-      "order": 4
+      "demoUrl": "https://sarouel-ou-mocassin.codeas.me",
+      "tags": ["Go", "Docker", "Vibe-coded"],
+      "order": 5
     },
     {
       "id": "wind-wise",
@@ -54,15 +64,15 @@
       "description": "A modern Next.js application with server components and Drizzle ORM.",
       "fullDescription": "Wind Wise features Next.js App Router, Server Components, Server Actions, TypeScript, and Vercel Postgres integration for type-safe database queries.",
       "tags": ["Next.js", "TypeScript", "Drizzle ORM", "PostgreSQL"],
-      "order": 5
+      "order": 6
     },
     {
       "id": "airtime",
       "name": "Airtime",
       "description": "A project currently in development, not yet deployed.",
-      "fullDescription": "Airtime is a work-in-progress application. More details coming soon.",
-      "tags": ["Go", "In Development"],
-      "order": 6
+      "fullDescription": "Airtime is a work-in-progress application built with Go, HTMX, and Templ. More details coming soon.",
+      "tags": ["Go", "HTMX", "Templ", "In Development"],
+      "order": 7
     }
   ]
 }
