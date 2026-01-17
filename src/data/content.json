@@ -32,8 +32,8 @@
     {
       "id": "quickr",
       "name": "Quickr",
-      "description": "Shorten URLs, track clicks, find your links fast.",
-      "fullDescription": "A modern URL shortener with inline editing, real-time search, and click statistics.",
+      "description": "Your own golink, but actually yours.",
+      "fullDescription": "A self-hosted URL shortener with real-time search, click stats, and zero corporate overlords.",
       "sourceUrl": "https://github.com/AurelienS/quickr",
       "demoUrl": "https://quickr.codeas.me",
       "tags": ["Go", "HTMX", "SQLite"],
@@ -42,8 +42,8 @@
     {
       "id": "quickr-jump",
       "name": "Quickr Jump",
-      "description": "Jump to your short URLs from the browser address bar.",
-      "fullDescription": "A browser extension for Firefox & Chrome. Type 'q' + Space, then your keyword to instantly navigate.",
+      "description": "The sidekick extension for Quickr.",
+      "fullDescription": "Type 'q' + Space in your browser, then jump straight to your short URLs. Because clicking is overrated.",
       "sourceUrl": "https://github.com/AurelienS/quickr-jump",
       "tags": ["JavaScript", "Browser Extension"],
       "order": 4
@@ -51,8 +51,8 @@
     {
       "id": "sarouels-mocassins",
       "name": "Sarouels Mocassins",
-      "description": "The eternal debate: sarouels or mocassins?",
-      "fullDescription": "A fun project to settle the age-old fashion question. Entirely vibe-coded by AI.",
+      "description": "Left or right? But for fashion.",
+      "fullDescription": "The ultimate personality test disguised as a style quiz. Entirely vibe-coded by AI, no humans were harmed.",
       "sourceUrl": "https://github.com/AurelienS/sarouels-mocassins",
       "demoUrl": "https://sarouel-ou-mocassin.codeas.me",
       "tags": ["Go", "Docker", "Vibe-coded"],
@@ -61,16 +61,16 @@
     {
       "id": "airvibe",
       "name": "AirVibe",
-      "description": "Track and analyze your paragliding flights.",
-      "fullDescription": "A flight logbook with interactive maps and statistics for paragliders.",
+      "description": "Track your paragliding flights. The fancy one.",
+      "fullDescription": "A flight logbook with interactive maps and stats. For pilots who like their data visualized.",
       "tags": ["Next.js", "Prisma", "tRPC", "In Development"],
       "order": 6
     },
     {
       "id": "airtime",
       "name": "Airtime",
-      "description": "Your cigars, tracked and rated.",
-      "fullDescription": "A personal cigar journal to log tastings, ratings, and favorites.",
+      "description": "Track your paragliding flights. The other one.",
+      "fullDescription": "Another flight logbook, different vibe. Because one was clearly not enough.",
       "tags": ["Go", "HTMX", "Templ", "In Development"],
       "order": 7
     }

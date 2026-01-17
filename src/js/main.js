@@ -79,12 +79,12 @@ function renderProjects(projects) {
         <div class="project-links">
           ${project.sourceUrl ? `
             <a href="${escapeHtml(project.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="project-link">
-              Source Code
+              GitHub
             </a>
           ` : ''}
           ${project.demoUrl ? `
             <a href="${escapeHtml(project.demoUrl)}" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
-              Live Demo
+              Visit
             </a>
           ` : ''}
         </div>
@@ -137,12 +137,12 @@ function openProjectModal(projectId) {
       <div class="modal-links">
         ${project.sourceUrl ? `
           <a href="${escapeHtml(project.sourceUrl)}" target="_blank" rel="noopener noreferrer" class="project-link">
-            Source Code
+            GitHub
           </a>
         ` : ''}
         ${project.demoUrl ? `
           <a href="${escapeHtml(project.demoUrl)}" target="_blank" rel="noopener noreferrer" class="project-link project-link--primary">
-            Live Demo
+            Visit
           </a>
         ` : ''}
       </div>
