@@ -1,50 +1,109 @@
-# [PROJECT_NAME] Constitution
-<!-- Example: Spec Constitution, TaskFlow Constitution, etc. -->
+<!--
+SYNC IMPACT REPORT
+==================
+Version change: 0.0.0 → 1.0.0
+Bump rationale: MAJOR - Initial constitution creation
+
+Modified principles: N/A (new document)
+
+Added sections:
+- Core Principles (3 principles)
+- Development Workflow
+- Quality Gates
+- Governance
+
+Removed sections: N/A (new document)
+
+Templates requiring updates:
+- .specify/templates/plan-template.md: ✅ No updates needed (Constitution Check section is dynamic)
+- .specify/templates/spec-template.md: ✅ No updates needed (generic template)
+- .specify/templates/tasks-template.md: ✅ No updates needed (generic template)
+
+Follow-up TODOs: None
+==================
+-->
+
+# CodeAs Constitution
 
 ## Core Principles
 
-### [PRINCIPLE_1_NAME]
-<!-- Example: I. Library-First -->
-[PRINCIPLE_1_DESCRIPTION]
-<!-- Example: Every feature starts as a standalone library; Libraries must be self-contained, independently testable, documented; Clear purpose required - no organizational-only libraries -->
+### I. Simplicity First
 
-### [PRINCIPLE_2_NAME]
-<!-- Example: II. CLI Interface -->
-[PRINCIPLE_2_DESCRIPTION]
-<!-- Example: Every library exposes functionality via CLI; Text in/out protocol: stdin/args → stdout, errors → stderr; Support JSON + human-readable formats -->
+All implementation decisions MUST favor the simplest solution that meets requirements.
 
-### [PRINCIPLE_3_NAME]
-<!-- Example: III. Test-First (NON-NEGOTIABLE) -->
-[PRINCIPLE_3_DESCRIPTION]
-<!-- Example: TDD mandatory: Tests written → User approved → Tests fail → Then implement; Red-Green-Refactor cycle strictly enforced -->
+- **YAGNI (You Aren't Gonna Need It)**: Do not implement features or abstractions until they are actually needed
+- **Minimal Dependencies**: Every external dependency MUST be justified; prefer standard library solutions when adequate
+- **No Premature Optimization**: Optimize only when measurements demonstrate a problem
+- **Clear Over Clever**: Code MUST be readable by developers unfamiliar with the codebase; avoid clever tricks that sacrifice clarity
 
-### [PRINCIPLE_4_NAME]
-<!-- Example: IV. Integration Testing -->
-[PRINCIPLE_4_DESCRIPTION]
-<!-- Example: Focus areas requiring integration tests: New library contract tests, Contract changes, Inter-service communication, Shared schemas -->
+**Rationale**: Complexity is the primary cause of software project failure. Simple systems are easier to understand, test, maintain, and extend. Each layer of abstraction adds cognitive load and potential failure points.
 
-### [PRINCIPLE_5_NAME]
-<!-- Example: V. Observability, VI. Versioning & Breaking Changes, VII. Simplicity -->
-[PRINCIPLE_5_DESCRIPTION]
-<!-- Example: Text I/O ensures debuggability; Structured logging required; Or: MAJOR.MINOR.BUILD format; Or: Start simple, YAGNI principles -->
+### II. Code Quality
 
-## [SECTION_2_NAME]
-<!-- Example: Additional Constraints, Security Requirements, Performance Standards, etc. -->
+All code MUST meet quality standards that enable long-term maintainability.
 
-[SECTION_2_CONTENT]
-<!-- Example: Technology stack requirements, compliance standards, deployment policies, etc. -->
+- **Meaningful Names**: Variables, functions, and types MUST have descriptive names that reveal intent
+- **Small Functions**: Functions SHOULD do one thing and do it well; functions exceeding 30 lines require justification
+- **Clear Structure**: Code MUST be organized into logical modules with explicit boundaries and minimal coupling
+- **No Dead Code**: Unused code MUST be removed, not commented out or left for "future use"
+- **Consistent Style**: Code MUST follow project formatting and linting rules; no exceptions
 
-## [SECTION_3_NAME]
-<!-- Example: Development Workflow, Review Process, Quality Gates, etc. -->
+**Rationale**: Code is read far more often than it is written. Quality code reduces bugs, accelerates onboarding, and makes changes safer. Technical debt compounds exponentially when quality is deferred.
 
-[SECTION_3_CONTENT]
-<!-- Example: Code review requirements, testing gates, deployment approval process, etc. -->
+### III. Iterative Delivery
+
+Features MUST be delivered incrementally with working software at each milestone.
+
+- **Vertical Slices**: Each increment MUST deliver end-to-end functionality, not horizontal layers
+- **Working Software**: Every commit to main MUST leave the system in a deployable state
+- **Prioritized Delivery**: Features are implemented in priority order (P1 before P2 before P3)
+- **Ship Early**: Prefer shipping a minimal working feature over delaying for completeness
+- **Feedback Loops**: Each delivery enables user feedback that informs subsequent iterations
+
+**Rationale**: Incremental delivery reduces risk by validating assumptions early. Working software is the primary measure of progress. Small, frequent releases are safer and more valuable than large, infrequent ones.
+
+## Development Workflow
+
+The development workflow ensures consistent quality and collaboration:
+
+1. **Specification**: Features begin with a clear spec defining user scenarios and acceptance criteria
+2. **Planning**: Implementation plans document technical approach before coding begins
+3. **Implementation**: Code is written following the Core Principles above
+4. **Testing**: Tests MUST accompany all functional code; tests may be written before or alongside implementation
+5. **Review**: All changes require review before merging to main
+6. **Integration**: Changes are integrated frequently to avoid divergence
+
+## Quality Gates
+
+All pull requests MUST pass these gates before merge:
+
+- [ ] All tests pass
+- [ ] No linting errors or warnings
+- [ ] Code follows naming and structure conventions
+- [ ] Changes are documented in commit messages
+- [ ] Feature changes include test coverage
+- [ ] No decrease in overall code quality metrics
 
 ## Governance
-<!-- Example: Constitution supersedes all other practices; Amendments require documentation, approval, migration plan -->
 
-[GOVERNANCE_RULES]
-<!-- Example: All PRs/reviews must verify compliance; Complexity must be justified; Use [GUIDANCE_FILE] for runtime development guidance -->
+This constitution establishes the non-negotiable principles for CodeAs development.
 
-**Version**: [CONSTITUTION_VERSION] | **Ratified**: [RATIFICATION_DATE] | **Last Amended**: [LAST_AMENDED_DATE]
-<!-- Example: Version: 2.1.1 | Ratified: 2025-06-13 | Last Amended: 2025-07-16 -->
+**Authority**: This constitution supersedes all other practices, preferences, or precedents. When in conflict, constitution principles win.
+
+**Amendment Process**:
+1. Proposed changes MUST be documented with rationale
+2. Changes MUST be reviewed and approved by project maintainers
+3. Breaking changes (principle removal/redefinition) require migration plan
+4. All amendments increment the version according to semantic versioning
+
+**Compliance**:
+- All pull requests and code reviews MUST verify compliance with these principles
+- Violations MUST be corrected before merge
+- Justified exceptions MUST be documented in the Complexity Tracking section of the implementation plan
+
+**Versioning Policy**:
+- MAJOR: Backward-incompatible principle removals or redefinitions
+- MINOR: New principles added or existing principles materially expanded
+- PATCH: Clarifications, wording improvements, non-semantic changes
+
+**Version**: 1.0.0 | **Ratified**: 2026-01-17 | **Last Amended**: 2026-01-17
