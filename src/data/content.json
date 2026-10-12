@@ -121,6 +121,38 @@
       },
       "tags": ["Go", "HTMX", "Templ", "In Development"],
       "order": 7
+    },
+    {
+      "id": "weather4paraglider",
+      "name": "Weather4Paragliding",
+      "description": {
+        "en": "Is the air flyable? Windgram and sounding for one spot.",
+        "fr": "L'air est-il volable ? Windgram et sondage pour un spot."
+      },
+      "fullDescription": {
+        "en": "Pick a place and compare AROME, ARPEGE, ICON and HARMONIE. Temperature, dew point and wind, hour by hour, so you know if it is worth launching.",
+        "fr": "Choisissez un lieu et comparez AROME, ARPEGE, ICON et HARMONIE. Température, point de rosée et vent, heure par heure, pour savoir si ça vaut le décollage."
+      },
+      "sourceUrl": "https://github.com/AurelienS/weather4paraglider",
+      "demoUrl": "https://meteo.codeas.me",
+      "tags": ["React", "TypeScript", "Vite", "Open-Meteo"],
+      "order": 8
+    },
+    {
+      "id": "koktel",
+      "name": "Koktel",
+      "description": {
+        "en": "Your shelf, and the cocktails you can actually shake.",
+        "fr": "Votre bar, et les cocktails que vous pouvez vraiment shaker."
+      },
+      "fullDescription": {
+        "en": "List the bottles you have. Koktel matches them to 24cocktails recipes, shows what is one or two ingredients away, and what is missing for a specific drink.",
+        "fr": "Notez les bouteilles que vous avez. Koktel les rapproche des recettes 24cocktails, montre celles à un ou deux ingrédients près, et ce qu'il manque pour un cocktail précis."
+      },
+      "sourceUrl": "https://github.com/AurelienS/koktel",
+      "demoUrl": "https://koktel.codeas.me",
+      "tags": ["Python", "FastAPI", "SQLite"],
+      "order": 9
     }
   ],
   "ui": {
